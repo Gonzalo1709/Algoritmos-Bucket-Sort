@@ -35,7 +35,9 @@ test_100(){
 }
 
 int main() {
-    // Creando un array de floats aleatorios distribuidos uniformemente entre 0 y 1
-    
+    //Start counter
+    test_100();
+    //End counter
+    //Print time elapsed for function
     return 0;
 }
