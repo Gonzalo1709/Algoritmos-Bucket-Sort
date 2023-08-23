@@ -10,7 +10,7 @@
 using namespace std;
 
 void bucketSort(float arr[], int n) {
-    vector<float> bucketVector[n]; //creamos un vector de floats de tamaño n (cantidad de buckets)
+    vector<double> bucketVector[n]; //creamos un vector de floats de tamaño n (cantidad de buckets)
 
     for (int i = 0; i < n; i++) { //inicializamos cada bucket con un vector vacío
         int bucket = n * arr[i]; //seleccionamos el bucket correspondiente
@@ -33,7 +33,7 @@ void bucketSort(float arr[], int n) {
 
     int index = 0; //índice para recorrer el arreglo
     for (int i = 0; i < n; i++) { //recorremos cada bucket
-        for (float j : bucketVector[i]) { //recorremos cada elemento del bucket
+        for (double j : bucketVector[i]) { //recorremos cada elemento del bucket
             arr[index++] = j; //agregamos el elemento al arreglo
         }
     } //al finalizar, el arreglo está ordenado
