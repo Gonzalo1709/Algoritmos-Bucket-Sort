@@ -4,8 +4,12 @@
 
 using namespace std;
 
-int main() {
-    // Creando un array de floats aleatorios distribuidos uniformemente entre 0 y 1
+void executiontime(){
+    //Calculate execution time of a function 
+    //https://stackoverflow.com/questions/2808398/easily-measure-elapsed-time
+}
+
+test_100(){
     int arraySize = 100;
     float arr[arraySize];
     std::random_device rd;
@@ -28,6 +32,10 @@ int main() {
         cout << arr[i] << " ";
     }
     cout << endl;
+}
 
+int main() {
+    // Creando un array de floats aleatorios distribuidos uniformemente entre 0 y 1
+    
     return 0;
 }
