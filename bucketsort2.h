@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 
-//do a bucket sort algorithm with O(n) complexity
-
 using namespace std;
 
 void bucket_sort(double arr[], int n){

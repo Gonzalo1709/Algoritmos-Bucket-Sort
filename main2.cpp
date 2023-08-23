@@ -1,4 +1,4 @@
-#include "bucketsort.h"
+#include "bucketsort2.h"
 #include <random>
 #include <cmath>
 #include <iomanip>
@@ -10,10 +10,9 @@ using namespace std;
 
 void createFile(string fileName) {
     ofstream file;
-    int arraySize = 1000000;
-    float arr[arraySize];
+    int arraySize = 100000;
+    double arr[arraySize];
     file.open(fileName);
-    int decimalPlaces = 2;
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(0.00, 1.00);
@@ -23,11 +22,11 @@ void createFile(string fileName) {
 
     file << "Array sin ordenar: " << endl;
     for (int i = 0; i < arraySize; i++) {
-        file << (arr[i]) << " ";
+        file << std::fixed << std::setprecision(6) << (arr[i]) << " ";
     }
     cout << endl;
 
-    bucketSort(arr, arraySize);
+    bucket_sort(arr, arraySize); 
 
     file << "Array ordenada: " << endl;
     for (int i = 0; i < arraySize; i++) {
@@ -37,8 +36,7 @@ void createFile(string fileName) {
 }
 
 int main() {
-    int arraySize = 1000000;
-    float arr[arraySize];
     createFile("unorderedArray.txt");
+    return 0;
 }
 
