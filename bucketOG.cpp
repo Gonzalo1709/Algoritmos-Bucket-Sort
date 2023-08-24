@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cmath>
+#include <chrono>
 
 using namespace std;
 
-void bucketSort(double arr[], int size) {
-    if (size <= 0)
-        return;
+void bucketSort(double arr[],int size) {
+    
 
     // Encontramos el mínimo y el máximo del array
     double min = arr[0];
@@ -74,15 +74,86 @@ void bucketSort(double arr[], int size) {
     delete[] buckets; // Liberamos el array de buckets
 }
 
-int main() {
-    double arr[] = {0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    bucketSort(arr, size);
-    cout << "Sorted array is:\n";
+void test(int size){
+    double* arr = new double[size];
+
+    srand(time(nullptr));
+    for (int i = 0; i < size; i++) {
+        arr[i] = static_cast<double>(rand()) / RAND_MAX;
+    }
+
+    // Tomamos el tiempo de ejecución
+    clock_t start, end;
+    start = clock();
+
+
+    bucketSort(arr,size); 
+
+    cout << "Array ordenado" << endl;
     for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }
     cout << endl;
 
+    end = clock();
+
+    double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+
+    cout << "Tiempo de ejecución: " << time_taken << " segundos" << endl;
+    
+
+    // Comprobamos que se hayan impreso los n números
+    int j=0;
+    for (int i = 0; i < size; i++) {
+        j++;
+    }
+    cout << j << endl;
+
+    delete[] arr;
+
+}
+
+
+int main() {
+    test(500000);
+    // double arr[] = {0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434};
+    // int size = sizeof(arr) / sizeof(arr[0]);
+    // bucketSort(arr, size);
+    // cout << "Sorted array is:\n";
+    // for (int i = 0; i < size; i++) {
+    //     cout << arr[i] << " ";
+    // }
+    // cout << endl;
+
     return 0;
 }
+
+
+// 100
+// 0.000117 segundos
+// 0.000162 segundos
+// 0.000164 segundos
+// 0.000164 segundos
+// 0.000163 segundos
+
+
+// 1,000
+// 0.005721 segundos
+// 0.0068 segundos
+// 0.005869 segundos
+// 0.006877 segundos
+// 0.006251 segundos
+
+
+// 10,000
+// 0.531206 segundos
+// 0.561703 segundos
+//  0.579365 segundos
+// 0.570178
+// 0.580412
+
+
+// 100000
+// 60.1815 segundos
+// 61.5009 segundos
+
