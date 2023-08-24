@@ -4,10 +4,9 @@
 using namespace std;
 
 void bucket_sort(double arr[], int n){
-    //without threads
 
     //create a vector of floats of size n (number of buckets)
-    vector<double> bucketVector[n];
+    vector<double> bucketVector[n/2];
 
     //initialize each bucket with an empty vector
     for(int i = 0; i < n; i++){
