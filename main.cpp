@@ -8,10 +8,21 @@
 
 using namespace std;
 
+
 //create a .txt file to store the ordered and unordered arrays
 void createFile(string fileName) {
     ofstream file;
     int arraySize = 1000000;
+}
+
+void executiontime(){
+    //Calculate execution time of a function 
+    //https://stackoverflow.com/questions/2808398/easily-measure-elapsed-time
+}
+
+
+    int arraySize = 100;
+
     float arr[arraySize];
     file.open(fileName);
     int decimalPlaces = 2;
@@ -38,7 +49,13 @@ void createFile(string fileName) {
 }
 
 int main() {
+
     int arraySize = 1000000;
     float arr[arraySize];
-    createFile("unorderedArray.txt");
+//     createFile("unorderedArray.txt");
+
+    // Creando un array de floats aleatorios distribuidos uniformemente entre 0 y 1
+    
+    return 0;
+
 }
