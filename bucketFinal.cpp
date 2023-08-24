@@ -71,20 +71,27 @@ void bucketSort(double arr[], int n, int numBuckets) {
 
 int main() {
     int arraySize = 1000000;
-    int numBuckets = 100; // Número de buckets por default
+    int numBuckets = 100000; // Número de buckets por default
     double* arr = new double[arraySize];
 
     srand(time(nullptr));
     for (int i = 0; i < arraySize; i++) {
         arr[i] = static_cast<double>(rand()) / RAND_MAX;
     }
+    cout << "ARRAY DESORDENADO: " << endl; 
+    for (int i = 0; i < arraySize; i++) {
+        cout << arr[i] << " ";
+    }
 
+    cout << "----------" << endl;
     // Tomamos el tiempo de ejecución
     clock_t start, end;
     start = clock();
 
     bucketSort(arr, arraySize, numBuckets);
-
+// 0.016751
+//  0.007368
+    cout << "Array ordenado" << endl;
     for (int i = 0; i < arraySize; i++) {
         cout << arr[i] << " ";
     }
