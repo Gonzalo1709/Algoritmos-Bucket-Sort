@@ -4,12 +4,11 @@
 
 using namespace std;
 
-void bucketSort(double arr[],int size) {
-    
-
+template <typename T>
+void bucketSort(T arr[],int size) {
     // Encontramos el mínimo y el máximo del array
-    double min = arr[0];
-    double max = arr[0];
+    T min = arr[0];
+    T max = arr[0];
     for (int i = 1; i < size; i++) {
         if (arr[i] < min) {
             min = arr[i];
@@ -20,17 +19,16 @@ void bucketSort(double arr[],int size) {
     }
 
     // Creamos los buckets como arrays de arreglos dinámicos
-    int numBuckets = size;  // Puedes ajustar esto según tus necesidades
-    double **buckets = new double*[numBuckets];
+    int numBuckets = sqrt(size);  // cant buckets = Raiz cuadrada del size
+    T **buckets = new T*[numBuckets];
     for (int i = 0; i < numBuckets; i++) {
-        buckets[i] = new double[size];
+        buckets[i] = new T[size];
         for (int j = 0; j < size; j++) {
             buckets[i][j] = 0; // Inicializamos los arreglos a 0
         }
     }
-
     // Distribuimos los elementos a los buckets
-    double range = (max - min) / numBuckets;
+    T range = (max - min) / numBuckets;
     for (int i = 0; i < size; i++) {
         int bucketIndex = static_cast<int>((arr[i] - min) / range);
         // Aseguramos que el índice del bucket esté en el rango válido
@@ -43,14 +41,13 @@ void bucketSort(double arr[],int size) {
         }
         buckets[bucketIndex][j] = arr[i];
     }
-
     // Ordenamos los elementos de cada bucket usando Insertion Sort
     for (int i = 0; i < numBuckets; i++) {
         for (int j = 1; j < size; j++) {
             if (buckets[i][j] == 0) {
                 break;
             }
-            double key = buckets[i][j];
+            T key = buckets[i][j];
             int k = j - 1;
             while (k >= 0 && buckets[i][k] > key) {
                 buckets[i][k + 1] = buckets[i][k];
@@ -85,29 +82,19 @@ void test(int size){
     // Tomamos el tiempo de ejecución
     clock_t start, end;
     start = clock();
-
-
+    
     bucketSort(arr,size); 
 
-    cout << "Array ordenado" << endl;
-    for (int i = 0; i < size; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-
     end = clock();
-
     double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
 
-    cout << "Tiempo de ejecución: " << time_taken << " segundos" << endl;
+    cout << time_taken << endl;
     
-
-    // Comprobamos que se hayan impreso los n números
-    int j=0;
-    for (int i = 0; i < size; i++) {
-        j++;
-    }
-    cout << j << endl;
+    // int j=0;
+    // for (int i = 0; i < size; i++) {
+    //     j++;
+    // }
+    // cout << j << endl;
 
     delete[] arr;
 
@@ -115,45 +102,59 @@ void test(int size){
 
 
 int main() {
-    test(500000);
-    // double arr[] = {0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434};
-    // int size = sizeof(arr) / sizeof(arr[0]);
-    // bucketSort(arr, size);
-    // cout << "Sorted array is:\n";
-    // for (int i = 0; i < size; i++) {
-    //     cout << arr[i] << " ";
-    // }
-    // cout << endl;
+    cout << "10" << endl;
+    test(10);
+    test(10);
+    test(10);
+    test(10);
+    test(10);
 
-    return 0;
+    cout<<endl;
+
+    cout << "100" << endl;
+    test(100);
+    test(100);
+    test(100);
+    test(100);
+    test(100);
+
+    cout<<endl;
+
+    cout << "1000" << endl;
+    test(1000);
+    test(1000);
+    test(1000);
+    test(1000);
+    test(1000);
+
+    cout<<endl;
+
+
+    cout << "10000" << endl;
+    test(10000);
+    test(10000);
+    test(10000);
+    test(10000);
+    test(10000);
+
+    cout<<endl;
+
+    cout << "100000" << endl;
+    test(100000);
+    test(100000);
+    test(100000);
+    test(100000);
+    test(100000);
+
+    cout<<endl;
+
+    cout << "1000000" << endl;
+    test(1000000);
+    test(1000000);
+    test(1000000);
+    test(1000000);
+    test(1000000);
+
+    cout<<endl;
 }
-
-
-// 100
-// 0.000117 segundos
-// 0.000162 segundos
-// 0.000164 segundos
-// 0.000164 segundos
-// 0.000163 segundos
-
-
-// 1,000
-// 0.005721 segundos
-// 0.0068 segundos
-// 0.005869 segundos
-// 0.006877 segundos
-// 0.006251 segundos
-
-
-// 10,000
-// 0.531206 segundos
-// 0.561703 segundos
-//  0.579365 segundos
-// 0.570178
-// 0.580412
-
-
-// 100000
-// 60.1815 segundos
-// 61.5009 segundos
 
